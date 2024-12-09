@@ -1,0 +1,4 @@
+flask
+xgboost
+joblib
+prometheus_client

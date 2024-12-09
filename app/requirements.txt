@@ -1,0 +1,6 @@
+flask
+paho-mqtt
+prometheus_client
+requests
+psutil
+docker
