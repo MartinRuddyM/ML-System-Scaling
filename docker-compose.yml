@@ -1,0 +1,96 @@
+version: '3.8'
+services:
+  app:
+    build: ./app
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "5000:5000"
+    depends_on:
+      - linear_model
+      - xgboost_model
+      - image_model
+      - influx_simulator
+      - rabbitmq
+    environment:
+      BROKER_ADDRESS: rabbitmq
+      BROKER_PORT: 1883
+    user: root
+
+  linear_model:
+    build: ./models/linear
+    ports:
+      - "5001:5000"
+    depends_on:
+      - rabbitmq
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "1g"
+
+  xgboost_model:
+    build: ./models/xgboost
+    ports:
+      - "5002:5000"
+    depends_on:
+      - rabbitmq
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "1g"
+
+  image_model:
+    build: ./models/image
+    #ports:
+    #  - "5003:5000"
+    depends_on:
+      - rabbitmq
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "2g"
+
+  influx_simulator:
+    build: ./influx_simulator
+    ports:
+      - "5004:5000"
+    depends_on:
+      - rabbitmq
+    environment:
+      BROKER_ADDRESS: rabbitmq
+      BROKER_PORT: 1883
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "1883:1883"
+    command: sh -c "rabbitmq-plugins enable rabbitmq_mqtt && rabbitmq-server"
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+  pushgateway:
+    image: prom/pushgateway:latest
+    container_name: pushgateway
+    ports:
+      - "9091:9091"
+
+volumes:
+  grafana-data:
+
