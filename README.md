@@ -47,3 +47,17 @@ Each part plays a specific role in achieving the overall goal of evaluating the 
 4. **Machine Learning Models**: The system incorporates the three different machine learning models discussed above.
 
 5. **Monitoring and Visualization**: The system uses Prometheus to collect performance metrics from the main application, such as CPU and memory usage. These metrics are visualized in Grafana, providing an intuitive way to analyze system performance and resource utilization during various scaling scenarios.
+
+## Simulating the Data Flow
+
+To test the scalability of the system, we use the **Influx Simulator** to simulate a rhythmic flow of data that alternates between periods of normal traffic and heavy traffic. This up-and-down traffic pattern is essential for evaluating how the system responds to changes in demand and how effectively it can scale resources to handle varying workloads.
+
+The simulation works in a cyclic manner over a total duration of 7 minutes:
+1. **Normal Traffic Phase**: The data flow begins at a steady, moderate rate, simulating normal conditions. This phase lasts for 1 minute and establishes a baseline workload for the system.
+2. **Heavy Traffic Phase**: After the initial normal phase, the simulator increases the data flow significantly, representing a spike in demand. This phase lasts for 2 minutes and pushes the system to its limits, requiring additional resources to handle the increased load.
+3. **Return to Normal Traffic**: The data flow decreases back to the steady normal level for 2 minutes. This tests the system's ability to release unnecessary resources and operate efficiently during lighter workloads.
+4. **Final Heavy Traffic Phase**: The simulation ends with another 2-minute period of heavy traffic, forcing the system to once again scale up resources to handle the high demand.
+
+![image](https://github.com/user-attachments/assets/adde56f5-29fa-456d-a57a-7588fa734537)
+
+This rhythmic process is crucial for testing **elasticity**, one of the key aspects of scalability. By alternating between high and low workloads, the simulator creates conditions that mimic real-world usage patterns, where systems often need to adapt dynamically to fluctuating demands. The ability of the system to scale up and down efficiently in response to these changes is a strong indicator of its scalability and performance under variable conditions.
