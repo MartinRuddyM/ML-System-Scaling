@@ -74,3 +74,12 @@ In this project, we implemented two primary scaling strategies to handle changes
 
 Both strategies are triggered and managed by the **monitoring component** in the main app, which constantly tracks CPU usage of the `image_model` service. If the usage exceeds a predefined threshold, the system scales up, and if it drops below a lower threshold, it scales down. By implementing both strategies, we were able to evaluate their efficiency and effectiveness in adapting to fluctuating traffic patterns.
 
+## Learnings
+
+This project offered a good opportnity to dive into the comparison of scaling strategies. It was also a good chance to practice the setup of a ML system and how its components communicate between them.
+
+Regarding the scaling strategies tested, only horizontal and vertical scaling were used. However, the project's framework offers the possibility to test other more complex scaling strategies, such as hybrid scaling or dynamic load balancing.
+
+Comparing both verticla and horizontal scaling, vertical can be better for small applications or when resource needs are predictable and the hardware can handle the increase. It can be faster to allocate the resources, compared to horizontal scaling where a new machine needs to be set up. In this implementation, vertical scaling takes around 6 seconds to complete, while horizontal scaling can usually take about 10 to 15 seconds. This difference could be significative depending on the use case. Horizontal scaling can be better for large applications and high-traffic systems, since it is highly elastic and it can scale indefinitely given enough resources.
+
+Overall, this project showed the importance of designing scalable systems that can adapt to changing demands while maintaining performance and reliability. Without any scaling strategy implemented, the system collapsed due to too much traffic. These learnings will guide future efforts in building robust, efficient, and elastic systems for machine learning and beyond.
