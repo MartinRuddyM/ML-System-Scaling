@@ -34,7 +34,7 @@ Out of the three, the image classifier is of course the most resource-demanding.
 
 The system is designed with multiple components working together to simulate, process, and monitor data flow. Each part plays a specific role in achieving the overall goal of evaluating the scalability of machine learning models.
 
-1. **Initial Datasets**: The project starts with datasets that represent various types of data, such as numerical features or images. These datasets form the basis for testing and evaluating the performance of the models but are not discussed in detail here.
+1. **Initial Datasets**: The project starts with datasets that represent various types of data, such as numerical features or images. These datasets form the basis for testing and evaluating the performance of the models as they are fed for making predictions.
 
 2. **Influx Simulator**: This component simulates a data stream by sending data to the system. It uses the MQTT protocol to communicate, which is commonly applied in environments like IoT systems. While it replicates a real-world data flow, the focus is on simulating the data transmission rather than implementing IoT-specific details.
 
