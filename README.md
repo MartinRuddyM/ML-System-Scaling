@@ -16,8 +16,6 @@ This project explores Elasticity by testing how systems can scale using differen
 
 In order to test the scaling strategies, we need some actual ML models taht will amke real predictions within the system. For this project, three models of different types are used. These include a simple linear regression model, a slightly more complex XGBoost model, and an image classification model. The idea is to deploy these models and have them making regular predictions. When the data flow increases over its current capacity, the system should recognize that need and scale accordingly, thus providing the opportunity to test the scalability.
 
-### Machine Learning Models Used
-
 1. **Linear Regression Model**  
    - **Type**: Predictive model.  
    - **Purpose**: This model predicts numerical values based on input features. For example, it could be used to predict energy consumption, temperature, or other continuous metrics depending on the dataset provided.  
@@ -26,9 +24,10 @@ In order to test the scaling strategies, we need some actual ML models taht will
    - **Type**: Predictive model (Boosted Decision Trees).  
    - **Purpose**: XGBoost is used for making predictions based on structured data. It is particularly effective for complex datasets and is designed for regression tasks or binary/multi-class classification, depending on the problem setup.  
 
-3. **Image Classifier Model**  
+3. **Image Classifier Model: ResNet50**  
    - **Type**: Classification model.  
    - **Purpose**: This model classifies images into categories. For instance, it might identify whether an image contains a specific object or belongs to a certain class. It is designed to process unstructured image data and provide class probabilities as output.
+   - **Description**: ResNet50 is a deep learning model based on a residual neural network architecture. It is widely used for image classification tasks due to its ability to train very deep networks effectively by using residual connections. These connections help to prevent the problem of vanishing gradients, allowing the model to maintain high accuracy even with complex datasets. ResNet50 is pre-trained on large datasets like ImageNet, making it a reliable and efficient choice for image recognition and classification tasks.  
 
 Out of the three, the image classifier is of course the most resource-demanding. Therefore, the focus of data overflow has been on that model in order to create the need in the system of having to scale.
 
