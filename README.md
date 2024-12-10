@@ -26,8 +26,7 @@ In order to test the scaling strategies, we need some actual ML models taht will
 
 3. **Image Classifier Model: ResNet50**  
    - **Type**: Classification model.  
-   - **Purpose**: This model classifies images into categories. For instance, it might identify whether an image contains a specific object or belongs to a certain class. It is designed to process unstructured image data and provide class probabilities as output.
-   - **Description**: ResNet50 is a deep learning model based on a residual neural network architecture. It is widely used for image classification tasks due to its ability to train very deep networks effectively by using residual connections. These connections help to prevent the problem of vanishing gradients, allowing the model to maintain high accuracy even with complex datasets. ResNet50 is pre-trained on large datasets like ImageNet, making it a reliable and efficient choice for image recognition and classification tasks.  
+   - **Purpose**: ResNet50 is a deep learning model based on a residual neural network architecture. It classifies images into categories. For instance, it might identify whether an image contains a specific object or belongs to a certain class. It is designed to process unstructured image data and provide class probabilities as output.ResNet50 is pre-trained on large datasets like ImageNet, making it a reliable and efficient choice for image recognition and classification tasks.
 
 Out of the three, the image classifier is of course the most resource-demanding. Therefore, the focus of data overflow has been on that model in order to create the need in the system of having to scale.
 
