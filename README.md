@@ -58,6 +58,6 @@ The simulation works in a cyclic manner over a total duration of 7 minutes:
 3. **Return to Normal Traffic**: The data flow decreases back to the steady normal level for 2 minutes. This tests the system's ability to release unnecessary resources and operate efficiently during lighter workloads.
 4. **Final Heavy Traffic Phase**: The simulation ends with another 2-minute period of heavy traffic, forcing the system to once again scale up resources to handle the high demand.
 
-![image](https://github.com/user-attachments/assets/adde56f5-29fa-456d-a57a-7588fa734537)
+![image](https://github.com/user-attachments/assets/50647518-728a-4c9b-8dcf-f25d8d5336c4)
 
 This rhythmic process is crucial for testing **elasticity**, one of the key aspects of scalability. By alternating between high and low workloads, the simulator creates conditions that mimic real-world usage patterns, where systems often need to adapt dynamically to fluctuating demands. The ability of the system to scale up and down efficiently in response to these changes is a strong indicator of its scalability and performance under variable conditions.
