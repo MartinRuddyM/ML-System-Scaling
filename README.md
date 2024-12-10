@@ -30,4 +30,19 @@ In order to test the scaling strategies, we need some actual ML models taht will
 
 Out of the three, the image classifier is of course the most resource-demanding. Therefore, the focus of data overflow has been on that model in order to create the need in the system of having to scale.
 
+## System Design
 
+The system is designed with multiple components working together to simulate, process, and monitor data flow. Each part plays a specific role in achieving the overall goal of evaluating the scalability of machine learning models.
+
+1. **Initial Datasets**: The project starts with datasets that represent various types of data, such as numerical features or images. These datasets form the basis for testing and evaluating the performance of the models but are not discussed in detail here.
+
+2. **Influx Simulator**: This component simulates a data stream by sending data to the system. It uses the MQTT protocol to communicate, which is commonly applied in environments like IoT systems. While it replicates a real-world data flow, the focus is on simulating the data transmission rather than implementing IoT-specific details.
+
+3. **Main Application**: The main app serves as the central hub of the system. It receives incoming data via MQTT, determines the appropriate machine learning model for the task, and routes the data accordingly. Additionally, it monitors system metrics, such as CPU and memory usage, for each component to evaluate their resource consumption during scaling.
+
+4. **Machine Learning Models**: The system incorporates three different machine learning models:
+   - Linear Regression: For predicting continuous numerical outputs.
+   - XGBoost: For classification tasks based on structured data.
+   - ResNet50: For image classification tasks.
+
+5. **Monitoring and Visualization**: The system uses Prometheus to collect performance metrics from the main application, such as CPU and memory usage. These metrics are visualized in Grafana, providing an intuitive way to analyze system performance and resource utilization during various scaling scenarios.
