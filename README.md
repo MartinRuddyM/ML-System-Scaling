@@ -80,7 +80,7 @@ To monitor the performance of the system and analyze the impact of scaling strat
 
 For visualization, **Grafana** is integrated with Prometheus as the data source. There are custom dashboards in Grafana to plot the metrics over time, offering clear insights into the system's behavior. The graphs display the CPU usage of the container running each model, allowing to track how resource utilization fluctuates during different phases of the data flow simulation.
 
-![image](https://github.com/user-attachments/assets/3a6c8ba2-2bd3-48eb-9d60-34f4ab08609d)
+![image](https://github.com/user-attachments/assets/5b816e36-4530-4f8c-ae1d-07568463a2bc)
 
 These visualizations were instrumental in understanding the system's performance under varying loads. They provide clear evidence of how scaling (both horizontal and vertical) affect resource consumption. For example, during high traffic phases, the CPU usage spikes were evident, and the graphs demonstrated the system's ability to scale up and then return to normal levels during lighter traffic phases.
 
