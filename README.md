@@ -61,3 +61,16 @@ The simulation works in a cyclic manner over a total duration of 7 minutes:
 ![image](https://github.com/user-attachments/assets/50647518-728a-4c9b-8dcf-f25d8d5336c4)
 
 This rhythmic process is crucial for testing **elasticity**, one of the key aspects of scalability. By alternating between high and low workloads, the simulator creates conditions that mimic real-world usage patterns, where systems often need to adapt dynamically to fluctuating demands. The ability of the system to scale up and down efficiently in response to these changes is a strong indicator of its scalability and performance under variable conditions.
+
+## Scaling Strategies
+
+In this project, we implemented two primary scaling strategies to handle changes in workload: **vertical scaling** and **horizontal scaling**. Each approach has its own features and benefits, and both were carefully implemented to test the elasticity of the system under varying traffic conditions.
+
+1. **Vertical Scaling**:
+   Vertical scaling involves increasing or decreasing the resources allocated to a single container, such as the number of CPUs. In this project, vertical scaling adjusts the CPU limits for the image model container based on its workload. This was implemented using the `docker update` command, which modifies the CPU allocation dynamically. This strategy is straightforward to implement and avoids creating additional containers. However, it has limitations, as it depends on the maximum capacity of a single machine.
+
+2. **Horizontal Scaling**:
+   Horizontal scaling involves increasing or decreasing the number of container replicas to handle the workload. In our implementation, the system scales the `image_model` service by adding or removing replicas based on CPU usage. This is achieved by simulating the scaling process within the code and tracking the number of replicas using a global variable (`image_model_replicas`). Horizontal scaling is highly elastic and can handle larger workloads by distributing the load across multiple containers. However, it introduces additional complexity, such as managing communication and balancing the load among replicas.
+
+Both strategies are triggered and managed by the **monitoring component** in the main app, which constantly tracks CPU usage of the `image_model` service. If the usage exceeds a predefined threshold, the system scales up, and if it drops below a lower threshold, it scales down. By implementing both strategies, we were able to evaluate their efficiency and effectiveness in adapting to fluctuating traffic patterns.
+
