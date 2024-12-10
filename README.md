@@ -76,13 +76,13 @@ Both strategies are triggered and managed by the **monitoring component** in the
 
 ## Data Collection and Visualization
 
-To monitor the performance of the system and analyze the impact of scaling strategies, data was collected from the main application using **Prometheus**. The main app was configured to gather metrics, specifically focusing on **CPU usage** and memory consumption of the model containers. These metrics were extracted in real-time from the running Docker containers and pushed to a **Prometheus Pushgateway**. Prometheus then periodically scraped this data, storing it in its time-series database.
+To monitor the performance of the system and analyze the impact of scaling strategies, data is collected from the main application using **Prometheus**. The main app is configured to gather metrics, specifically focusing on **CPU usage** and memory consumption of the model containers. These metrics are extracted in real-time from the running Docker containers and pushed to a **Prometheus Pushgateway**. Prometheus then periodically scrapes this data, storing it in a time-series database.
 
-For visualization, **Grafana** was integrated with Prometheus as the data source. Custom dashboards were created in Grafana to plot the metrics over time, offering clear insights into the system's behavior. The graphs displayed the CPU usage of the container running each model, allowing us to track how resource utilization fluctuated during different phases of the data flow simulation.
+For visualization, **Grafana** is integrated with Prometheus as the data source. There are custom dashboards in Grafana to plot the metrics over time, offering clear insights into the system's behavior. The graphs display the CPU usage of the container running each model, allowing to track how resource utilization fluctuates during different phases of the data flow simulation.
 
-These visualizations were instrumental in understanding the system's performance under varying loads. They provided clear evidence of how scaling (both horizontal and vertical) affected resource consumption. For example, during high traffic phases, the CPU usage spikes were evident, and the graphs demonstrated the system's ability to scale up and then return to normal levels during lighter traffic phases.
+![image](https://github.com/user-attachments/assets/3a6c8ba2-2bd3-48eb-9d60-34f4ab08609d)
 
-By combining Prometheus for metric collection and Grafana for visualization, we established an efficient monitoring setup. This allowed for real-time observation of system behavior and provided valuable insights for evaluating and improving the scalability strategies.
+These visualizations were instrumental in understanding the system's performance under varying loads. They provide clear evidence of how scaling (both horizontal and vertical) affect resource consumption. For example, during high traffic phases, the CPU usage spikes were evident, and the graphs demonstrated the system's ability to scale up and then return to normal levels during lighter traffic phases.
 
 
 ## Learnings
