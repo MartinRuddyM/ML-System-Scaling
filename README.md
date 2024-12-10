@@ -34,8 +34,7 @@ Out of the three, the image classifier is of course the most resource-demanding.
 
 The system is designed with multiple components working together to simulate, process, and monitor data flow.
 
-![image](https://github.com/user-attachments/assets/bfc748fc-7b28-4929-ad62-7f6f3b8babfe)
-
+![image](https://github.com/user-attachments/assets/08152b88-06b9-4016-acb3-a8406465d7aa)
 
 Each part plays a specific role in achieving the overall goal of evaluating the scalability of machine learning models. Every code component is located in its own Docker container, and the resource usage of each can be measured accordingly.
 
