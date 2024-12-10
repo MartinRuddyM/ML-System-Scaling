@@ -32,17 +32,19 @@ Out of the three, the image classifier is of course the most resource-demanding.
 
 ## System Design
 
-The system is designed with multiple components working together to simulate, process, and monitor data flow. Each part plays a specific role in achieving the overall goal of evaluating the scalability of machine learning models.
+The system is designed with multiple components working together to simulate, process, and monitor data flow.
 
-1. **Initial Datasets**: The project starts with datasets that represent various types of data, such as numerical features or images. These datasets form the basis for testing and evaluating the performance of the models as they are fed for making predictions.
+![image](https://github.com/user-attachments/assets/bfc748fc-7b28-4929-ad62-7f6f3b8babfe)
 
-2. **Influx Simulator**: This component simulates a data stream by sending data to the system. It uses the MQTT protocol to communicate, which is commonly applied in environments like IoT systems. While it replicates a real-world data flow, the focus is on simulating the data transmission rather than implementing IoT-specific details.
+
+Each part plays a specific role in achieving the overall goal of evaluating the scalability of machine learning models. Every code component is located in its own Docker container, and the resource usage of each can be measured accordingly.
+
+1. **Initial Datasets**: The project starts with datasets that represent various types of data, such as numerical features or images. These datasets form the basis for testing and evaluating the performance as they are fed into the models.
+
+2. **Influx Simulator**: This component simulates a data stream by sending data to the system. It uses the MQTT protocol to communicate, which is commonly applied in environments like IoT systems. While it replicates a real-world data flow, the focus is on simulating the data transmission rather than implementing IoT-specific details. This setup means that this project could be applied in a scenario where IoT is utilized, like an Industry 4.0 factory, for exmaple.
 
 3. **Main Application**: The main app serves as the central hub of the system. It receives incoming data via MQTT, determines the appropriate machine learning model for the task, and routes the data accordingly. Additionally, it monitors system metrics, such as CPU and memory usage, for each component to evaluate their resource consumption during scaling.
 
-4. **Machine Learning Models**: The system incorporates three different machine learning models:
-   - Linear Regression: For predicting continuous numerical outputs.
-   - XGBoost: For classification tasks based on structured data.
-   - ResNet50: For image classification tasks.
+4. **Machine Learning Models**: The system incorporates the three different machine learning models discussed above.
 
 5. **Monitoring and Visualization**: The system uses Prometheus to collect performance metrics from the main application, such as CPU and memory usage. These metrics are visualized in Grafana, providing an intuitive way to analyze system performance and resource utilization during various scaling scenarios.
